@@ -19,7 +19,6 @@ export default class FlatListBasics extends Component {
     getListViewItem = (item) => {  
         Alert.alert(item.text,item.body);  
         
-         
     }  
   
     render() {  
