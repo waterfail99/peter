@@ -33,7 +33,8 @@ const DATA_LIST = [
 class List extends Component {  
 
     onItemPress = (item) => {  
-        Alert.alert(item.text, item.body);
+        this.props.navigation.navigate("ListDetails", item)
+        // Alert.alert(item.text, item.body);
     }
 
     render() {  

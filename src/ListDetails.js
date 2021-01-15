@@ -1,12 +1,18 @@
 import React from'react';
-import {StyleSheet,View,Text} from 'react-native';
-import {globalStyles} from '../styles/global';
+import {
+    StyleSheet,
+    View,
+    Text
+} from 'react-native';
 
-export default function ListDetails({navigation}){
-    return(
-        <View style={golbaleStyles.container}>
-            <Text>asasa</Text>
-            <Text>{ navigation.getParam('body')}</Text>
-        </View>
-    )
+export default class ListDetails extends React.Component {
+    render(){
+        const { text, body } = this.props.route.params;
+        return(
+            <View style={{padding: 20}}>
+                <Text style={{fontSize: 16, fontWeight: '700'}}>{text}</Text>
+                <Text style={{marginTop: 8}}>{body}</Text>
+            </View>
+        )
+    }
 }

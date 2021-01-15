@@ -8,9 +8,11 @@ import {
 class DataItemView extends Component {
     render(){
         let item = this.props.item;
+        console.log("Props: ", this.props)
         
         return (
-            <TouchableOpacity onPress={() => this.props.onItemPress(item)}>
+            <TouchableOpacity 
+                onPress={() => this.props.onItemPress(item)}>
                 <Text style={styles.item}>{item.text}</Text>
             </TouchableOpacity>
         )
