@@ -1,60 +1,53 @@
-import * as React from 'react';
-import { Button, View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+// React Native Pass Value From One Screen to Another Using React Navigation
+// https://aboutreact.com/react-native-pass-value-from-one-screen-to-another-using-react-navigation/
 
-function HomeScreen({navigation}) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
-      <Button
-        title="Go to Components"
-        onPress={() => navigation.navigate('Components')}
-      />
-    </View>
-  );
-}
+import 'react-native-gesture-handler';
 
-class ComponentScreen extends React.Component {
-    render(){
-        return (
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                <Text>Components Screen</Text>
-                <Button
-                    title="Go to Details"
-                    onPress={() => this.props.navigation.navigate('Details')}
-                />
-            </View>
-        )
-    }
-}
+import React from 'react';
 
-function DetailsScreen() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
-      </View>
-    );
-}
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
+import FirstPage from './src/FirstPage';
+import SecondPage from './src/SecondPage';
 
 const Stack = createStackNavigator();
 
-function App() {
+const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home">
-            {props => <HomeScreen {...props}/>}
-        </Stack.Screen>
-        <Stack.Screen name="Details" component={DetailsScreen} />
-        <Stack.Screen name="Components" component={ComponentScreen} />
+      <Stack.Navigator initialRouteName="FirstPage">
+        <Stack.Screen
+          name="FirstPage"
+          component={FirstPage}
+          options={{
+            title: 'First Page', //Set Header Title
+            headerStyle: {
+              backgroundColor: 'black', //Set Header color
+            },
+            headerTintColor: '#fff', //Set Header text color
+            headerTitleStyle: {
+              fontWeight: 'bold', //Set Header text style
+            },
+          }}
+        />
+        <Stack.Screen
+          name="SecondPage"
+          component={SecondPage}
+          options={{
+            title: 'Second Page', //Set Header Title
+            headerStyle: {
+              backgroundColor: 'black', //Set Header color
+            },
+            headerTintColor: '#fff', //Set Header text color
+            headerTitleStyle: {
+              fontWeight: 'bold', //Set Header text style
+            },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
 
 export default App;
