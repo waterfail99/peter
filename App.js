@@ -1,17 +1,17 @@
-import React, { Component } from 'react';  
-import { 
-    AppRegistry, 
-    FlatList,  
-    StyleSheet, 
-    Text, 
-    TouchableOpacity,
-    View,
-    Alert 
-} from 'react-native';  
-import AppNavigator from './src/AppNavigator';
-import Login from './src/Login';
-import Register from './src/Register';
-  
+// import React, { Component } from 'react';
+// import {
+//     AppRegistry,
+//     FlatList,
+//     StyleSheet,
+//     Text,
+//     TouchableOpacity,
+//     View,
+//     Alert
+// } from 'react-native';
+// import AppNavigator from './src/AppNavigator';
+// import Login from './src/Login';
+// import Register from './src/Register';
+
 // const DATA_LIST = [  
 //     { id: 0, text: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',body:'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto' },
 //     { id: 1, text: 'qui est esse',body: "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui"},
@@ -77,7 +77,7 @@ import Register from './src/Register';
 //         );  
 //     }  
 // }  
-  
+
 // const styles = StyleSheet.create({  
 //     container: {  
 //       marginTop: 20,
@@ -92,10 +92,31 @@ import Register from './src/Register';
 //     },  
 // })  
 
-function App(){
+
+import 'react-native-gesture-handler';
+
+import React from 'react';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import Login from './src/Login';
+import Register from './src/Register';
+
+const Stack = createStackNavigator();
+
+const App = () => {
     return (
-        <Register/>
-    )
-}
-  
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: false, }}>
+                <Stack.Screen name="Register" component={Register} />
+                <Stack.Screen name="Login" component={Login} />
+                {/* {props => <Login {...props} />}
+                </Stack.Screen> */}
+
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+};
+
 export default App;

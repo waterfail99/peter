@@ -1,109 +1,128 @@
+// React Native Pass Value From One Screen to Another Using React Navigation
+// https://aboutreact.com/react-native-pass-value-from-one-screen-to-another-using-react-navigation/
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
+  SafeAreaView,
   StyleSheet,
-  Text,
   View,
-  Image,
+  Text,
   TextInput,
-  Button,
   TouchableOpacity,
-} from "react-native";
- 
-export default function App() {
- 
- 
+} from 'react-native';
+
+function Register({ navigation }) {
+  const [username, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
     <View style={styles.container}>
+      <View style={styles.topBar}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Login')}
+        >
+          <Text style={{ color: 'black', fontSize: 16, fontWeight: '500' }}>Log in</Text>
+        </TouchableOpacity>
+      </View>
 
-      <Text style={styles.heading}>Log In</Text>
-      <Image style={styles.image} source={require("./asseet/logo.png")} />
- 
-     
-      
-        <TextInput
-          placeholder={'Email'}
-          style={styles.inputStyle}
-          
-        />
-     
- 
-      
-        <TextInput
-          
-          placeholder={'Password'}
-          style={styles.inputStyle}
-          
-         
-        />
-      
- 
-      <TouchableOpacity>
-        <Text style={styles.forgot_button}>Forgot Password?</Text>
+
+      <Text style={styles.heading}>Create your account</Text>
+
+      <TextInput
+        placeholder={'Your Name'}
+        style={styles.inputStyle}
+        value={username}
+        onChangeText={(username) => setUserName(username)}
+      />
+
+      <TextInput
+        placeholder={'Email'}
+        style={styles.inputStyle}
+        value={email}
+        autoCapitalize={'none'}
+        onChangeText={(email) => setEmail(email)}
+      />
+      <TextInput
+        placeholder={'Password'}
+        style={styles.inputStyle}
+        secureTextEntry
+        value={password}
+        onChangeText={(password) => setPassword(password)}
+      />
+      {/* On click of the button we will send the data as a Json
+          From here to the Second Screen using navigation */}
+
+      <View style={{ flex: 1 }} />
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.RgsText}>Join Us</Text>
       </TouchableOpacity>
-  
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text style={styles.loginText}>Log In</Text>
-      </TouchableOpacity>
+
+      <Text style={styles.smallText}>
+        By pressing 'Join Us' you agree to
+          {'\n'}
+          our terms and conditions
+        </Text>
+
     </View>
   );
-}
- 
+};
+
+export default Register;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
+    padding: 42,
+    paddingTop: 32,
+  },
+  topBar: {
+    flexDirection: 'row',
+    width: '100%',
+    height: 46,
+    marginTop: 20,
+    justifyContent: 'flex-end',
+    alignItems: 'center'
   },
   heading: {
     fontSize: 40,
+    fontWeight: '600',
     textAlign: 'center',
-    marginVertical: 10,
+    marginTop: 52,
+    marginBottom: 24,
   },
- 
-  image: {
-    marginBottom: 40,
-    width: 200,
-    height:200
+  textStyle: {
+    textAlign: 'center',
+    fontSize: 18,
 
-  },
- 
-  inputView: {
-    width: '70%',
-    height: 44,
-    padding: 10,
     marginVertical: 10,
-    backgroundColor: '#DBDBD6',
-    borderRadius: 30,
-    
   },
- 
   inputStyle: {
-    width: '70%',
+    width: '100%',
     height: 44,
-    padding: 10,
     marginVertical: 10,
+    paddingHorizontal: 16,
     backgroundColor: '#DBDBD6',
     borderRadius: 30,
   },
- 
-  forgot_button: {
-    height: 30,
-    marginBottom: 30,
-  },
- 
-  loginBtn: {
-    width: "70%",
+  button: {
+    width: "100%",
     borderRadius: 25,
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 10,
     backgroundColor: "#009688",
-    
+    justifyContent: 'center',
+    padding: 10
   },
-  loginText:{
-    color:"white"
+  smallText: {
+    fontSize: 12,
+    textAlign: 'center',
+    marginVertical: 8,
+  },
+  RgsText: {
+    color: "white",
+    textAlign: 'center',
+    fontWeight: '500',
+    fontSize: 18,
   }
 });
