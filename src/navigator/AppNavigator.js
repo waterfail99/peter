@@ -3,8 +3,8 @@ import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { Register } from './Register';
-import { Login } from './Login';
+import { Register } from '../containers/auth/Register';
+import { Login } from '../containers/auth/Login';
 
 
 const Stack = createStackNavigator();

@@ -8,9 +8,9 @@ import {
     View,
     Alert 
 } from 'react-native';  
-import AppNavigator from './src/AppNavigator';
-import Login from './src/Login';
-import Register from './src/Register';
+import AppNavigator from './src/navigator/AppNavigator';
+// import Login from './src/Login';
+import Register from './src/containers/auth/Register';
   
 // const DATA_LIST = [  
 //     { id: 0, text: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',body:'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto' },
