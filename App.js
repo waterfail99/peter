@@ -11,6 +11,7 @@ import {
 import AppNavigator from './src/navigator/AppNavigator';
 import Login from './src/containers/auth/Login';
 import Register from './src/containers/auth/Register';
+import Restaurant from './src/containers/auth/Restaurant';
   
 // const DATA_LIST = [  
 //     { id: 0, text: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',body:'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto' },
@@ -94,7 +95,7 @@ import Register from './src/containers/auth/Register';
 
 function App(){
     return (
-        <AppNavigator/>
+        <Restaurant/>
     )
 }
   

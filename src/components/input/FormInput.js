@@ -17,24 +17,15 @@ export default class FormInput extends React.Component {
 
 const styles = StyleSheet.create({
     input: {
-        width: '80%',
-        height: 55,
+        width: '85%',
+        height: 38,
         padding: 10,
-        marginVertical: 5,
+        borderRadius: 4,
         backgroundColor: '#FFFFFF',
-        borderRadius: 30,
         
         borderWidth: 1,
-        borderColor: '#ddd',
-        borderBottomWidth: 0,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 30,
-        elevation: 15,
-        marginLeft: 5,
-        marginRight: 5,
-        marginTop: 10,
+        borderColor: '#BDB7B7',
+        
         
     },
 })
