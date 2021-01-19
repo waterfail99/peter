@@ -3,8 +3,8 @@ import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { Register } from '../containers/auth/Register';
-import { Login } from '../containers/auth/Login';
+import  Register  from '../containers/auth/Login';
+import  Login  from '../containers/auth/Register';
 
 
 const Stack = createStackNavigator();
@@ -13,10 +13,10 @@ function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Login">
-            {props => <Login {...props}/>}
+        <Stack.Screen name="Register">
+            {props => <Register {...props}/>}
         </Stack.Screen>
-        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="Login" component={Login} />
       
       </Stack.Navigator>
     </NavigationContainer>
