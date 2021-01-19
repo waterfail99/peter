@@ -3,19 +3,21 @@
 
 import React from 'react';
 import {
-  
   StyleSheet,
   View,
   Text,
   TextInput,
   TouchableOpacity,
   Button,
+  Image
 } from 'react-native';
 import AppButton from '../../components/button/AppButton';
 import TextButton from '../../components/button/TextButton';
 import FormInput from '../../components/input/FormInput';
 
-export default class Login extends React.Component {
+
+
+export default class Register extends React.Component {
 
   constructor(props){
     super(props);
@@ -24,16 +26,25 @@ export default class Login extends React.Component {
         email: '',
         password: '',
     }
+    
 }
+
     _renderHeader(){
       return (
-        <View>
-         
-          <Text style={styles.heading}>Create Your Account</Text>
+        <View style={{flexDirection:'row',}}>
+          <TouchableOpacity onPress={this.onGoLoginPress}>
+          <Image style={styles.image} source={require("../../assert/back.png")} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.onGoLoginPress}>
+          <Text style={{textAlign:'right',}}>Sign In</Text>
+          </TouchableOpacity>
+          
         </View>
       )
     }
-
+    onGoLoginPress = () =>{
+      this.props.navigation.navigate("Login")
+     }
     onRgsPress = () => {
       console.log("Here")
   }
@@ -43,12 +54,12 @@ export default class Login extends React.Component {
             <View style={{flex: 1}}>
                 <View style={styles.container}>
                 {this._renderHeader()}
-                    
+                <Text style={styles.heading}>Create Your Account</Text>
                     {/*Input to get the value from the user*/}
                     <FormInput
                         onChangeText={(username) => setUserName(username)}
                         placeholder={'Your Name'}
-                        onChangeText={(name) => this.setState({name})}
+                        onChangeText={(name) => console.log('Name:',name)}
                     />
                     <FormInput
                         placeholder={'Email'}
@@ -88,11 +99,22 @@ const styles = StyleSheet.create({
     fontSize: 40,
     textAlign: 'center',
     marginVertical: 10,
+    
   },
   smallText:{
+    fontWeight: "bold",
     fontSize: 10,
     textAlign: 'center',
     marginVertical: 10,
+    opacity:0.7
+  },
+  image: {
+    marginTop: 0,
+    marginRight:270,
+    width: 50,
+    height:50,
+    
+
   },
   
 });

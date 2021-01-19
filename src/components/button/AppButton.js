@@ -19,13 +19,13 @@ export default class AppButton extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        width: "70%",
+        width: "80%",
         borderRadius: 25,
-        height: 50,
+        height: 35,
         alignItems: "center",
         justifyContent: "center",
         marginTop: 10,
-        backgroundColor: "#009688",
+        backgroundColor: "#35EDC5",
     },
     title:{
         color:"white"
