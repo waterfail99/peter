@@ -113,7 +113,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#EBD5D5",
     alignItems: "center",
-    padding: 20,
+    paddingLeft: 20,
+    paddingRight:20,
+    paddingTop:0
   },
   heading: {
     fontWeight: "bold",
@@ -140,7 +142,7 @@ const styles = StyleSheet.create({
   TextInputs: {
   
     marginTop: 8,
-    marginLeft:150,
+    marginLeft:180,
     color:'red'
   },
   textLabel:{
