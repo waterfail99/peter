@@ -5,32 +5,57 @@ import DataItemView from './DataItemView';
 import BodyItemView from './BodyItemView';
 
 const DATA_LIST = [  
-  { id: 0, text: 'BTC / USDT',body:"11,103.10",ringgit:"MYR 47,743.717",percentage:"+7.29%",Vol:"Vol 0.34 USDT" },
-  { id: 1, text: 'BTC / USDT',body:"11,103.10",ringgit:"MYR 47,743.717",percentage:"+7.29%",Vol:"Vol 0.34 USDT"},
-  { id: 2, text: 'BTC / USDT',body:"11,103.10",ringgit:"MYR 47,743.717",percentage:"+7.29%",Vol:"Vol 0.34 USDT"},
-  { id: 3, text: 'BTC / USDT',body:"11,103.10",ringgit:"MYR 47,743.717",percentage:"+7.29%",Vol:"Vol 0.34 USDT" }
-  
-];
+  { base: 'USDT', coin: 'BTC', price: 35083.62, change: 0.65, volume: 23728.33, high: 36360.16, low: 33410, last: 34941.11, decimal: 2, priority: 1, isFeature: true},
+  { base: 'USDT', coin: 'EOS', price: 2.7460, change: 2.59, volume: 23597095, high: 2.8116, low: 2.656, last: 2.74, decimal: 4, priority: 5, isFeature: true},
+  { base: 'USDT', coin: 'ETH', price: 1352.65, change: -3.16, volume: 668705.38, high: 1402.24, low: 1235.71, last: 1354, decimal: 2, priority: 3, isFeature: false},
+  { base: 'USDT', coin: 'BNB', price: 42.0999, change: -0.76, volume: 591269.34, high: 42.6872, low: 40.2, last: 42.15, decimal: 4, priority: 2, isFeature: true},
+  { base: 'USDT', coin: 'XRP', price: 0.29217, change: 2.2, volume: 833009945.7, high: 0.31184, low: 33410.00, last: 0.28, decimal: 5, priority: 4, isFeature: false},
+
+]
+DATA_LIST.sort((a, b) => (a.priority > b.priority) ? 1 : -1)
+
+
+
+
+
+
+
 const Data_List_2 = [
   { id:0,
-    body:'BTC / USDT',
-    leftone:"Last Price", rightone:"11.105.83 ",rightone2:"/ 11,104.00 USD",
+    body:'USDT',
+    leftone:"BTC", rightone:"11.105.83 ",rightone2:"/ 11,104.00 USD",
     lefttwo:"24h Change", righttwo:"-0.35%",
     leftthree:"24h High", rightthree:"11,180.00",
     leftfour:"24h Low",   rightfour:"10,812.00",
     leftfive:"24h Volume",rightfive:"125.0",
   },
   { id:1,
-    body:'BTC / USDT',
-    leftone:"Last Price", rightone:"11.105.83 / 11,104.00 USD",
+    body:'USDT',
+    leftone:"EOS", rightone:"11.105.83 / 11,104.00 USD",
     lefttwo:"24h Change", righttwo:"-0.35%",
     leftthree:"24h High", rightthree:"11,180.00",
     leftfour:"24h Low",   rightfour:"10,812.00",
     leftfive:"24h Volume",rightfive:"125.0",
   },
   { id:2,
-    body:'BTC / USDT',
-    leftone:"Last Price", rightone:"11.105.83 / 11,104.00 USD",
+    body:'USDT',
+    leftone:"ETH", rightone:"11.105.83 / 11,104.00 USD",
+    lefttwo:"24h Change", righttwo:"-0.35%",
+    leftthree:"24h High", rightthree:"11,180.00",
+    leftfour:"24h Low",   rightfour:"10,812.00",
+    leftfive:"24h Volume",rightfive:"125.0",
+  },
+  { id:3,
+    body:'USDT',
+    leftone:"BNB", rightone:"11.105.83 ",rightone2:"/ 11,104.00 USD",
+    lefttwo:"24h Change", righttwo:"-0.35%",
+    leftthree:"24h High", rightthree:"11,180.00",
+    leftfour:"24h Low",   rightfour:"10,812.00",
+    leftfive:"24h Volume",rightfive:"125.0",
+  },
+  { id:4,
+    body:'USDT',
+    leftone:"XRP", rightone:"11.105.83 ",rightone2:"/ 11,104.00 USD",
     lefttwo:"24h Change", righttwo:"-0.35%",
     leftthree:"24h High", rightthree:"11,180.00",
     leftfour:"24h Low",   rightfour:"10,812.00",
@@ -41,6 +66,7 @@ class Scrolling extends Component  {
   onItemPress = (item) => {  
     // this.props.navigation.navigate("ListDetails", item)
     // Alert.alert(item.text, item.body);
+    
 }
   render(){
     return (
@@ -48,10 +74,15 @@ class Scrolling extends Component  {
         <ScrollView style={styles.scrollView} >
           
           <View style={{marginHorizontal: 20,marginTop:10}}>
+            
                   <FlatList  
+                  
                       data={DATA_LIST}  
+                      
                       renderItem={({item}) =>  
+                      
                           <DataItemView
+                         
                               item={item}
                               onItemPress={this.onItemPress}
                           />

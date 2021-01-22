@@ -7,13 +7,21 @@ import {
 } from 'react-native';  
 
 class BodyItemView extends Component {
+
+    
     render(){
         let item = this.props.item;
         console.log("Props: ", this.props)
+       
+
         
         return (
+            
             <View style={styles.item}
+
+        
                 onPress={() => this.props.onItemPress(item)}>
+                    
                     
                 <Text style={{fontSize:18}}>{item.body}</Text>
                 <View style={styles.textStyle}>
