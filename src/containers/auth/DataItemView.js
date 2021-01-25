@@ -9,7 +9,8 @@ import {
 
 class DataItemView extends Component {
     render(){
-        let item = this.props.item
+        let item = this.props.item;
+        let index = this.props.index;
         
         console.log("Props: ", item)
         
@@ -28,7 +29,7 @@ class DataItemView extends Component {
         return (
             
             <TouchableOpacity style={styles.item}
-            
+                key={`${item}${index}`}
                 onPress={() => this.props.onItemPress(item)}>
                     
                 <Text style={styles.textStyle}>{item.coin}</Text>

@@ -12,7 +12,7 @@ import AppNavigator from './src/navigator/AppNavigator';
 import Login from './src/containers/auth/Login';
 import Register from './src/containers/auth/Register';
 import Restaurant from './src/containers/auth/Restaurant';
-import Scrolling from './src/containers/auth/Scrolling';
+import Market from './src/containers/auth/Market';
 import Testing from './src/containers/auth/Testing';
   
 // const DATA_LIST = [  
@@ -97,7 +97,7 @@ import Testing from './src/containers/auth/Testing';
 
 function App(){
     return (
-        <Scrolling/>
+        <Market/>
     )
 }
   

@@ -11,126 +11,96 @@ class BodyItemView extends Component {
     
     render(){
         let item = this.props.item;
-        console.log("Props: ", this.props)
-       
-
-        
+        console.log("Props: ", this.props)    
         return (
-            
-            <View style={styles.item}
-
-        
+            <View style={styles.container}
                 onPress={() => this.props.onItemPress(item)}>
                     
-                    
-                <Text style={{fontSize:18}}>{item.body}</Text>
-                <View style={styles.textStyle}>
+                <Text style={{ fontSize:18, marginBottom: 4}}>{item.coin} / {item.base}</Text>
+
+                <KeyValueView
+                    titleColor={'#76D7C4'}
+                    valueColor={'#76D7C4'}
+                    title={'Last Price'}
+                    value={`${item.last.toFixed(item.decimal)} USD`}
+                />
+
+                <KeyValueView
+                    titleColor={'#76D7C4'}
+                    valueColor={item.change > 0?'green':'red'}
+                    title={'24h Change'}
+                    value={`${item.change.toFixed(2)} %`}
+                />
+
+                <KeyValueView
+                    title={'24h High'}
+                    value={`${item.high.toFixed(item.decimal)} USD`}
+                />
+
+                <KeyValueView
+                    title={'24h Low'}
+                    value={`${item.low.toFixed(item.decimal)} USD`}
+                />
+
+                <KeyValueView
+                    title={'24h Volume'}
+                    value={`${item.volume.toFixed(item.decimal)} USD`}
+                />
                
-                <Text style={styles.textLeftBlue}>{this.props.item.leftone}</Text>
-               
-                <Text style={styles.textBlur}> {this.props.item.rightone} {this.props.item.rightone2}</Text>
-                
-                </View>
-
-                <View style={styles.textStyle}>
-                <Text style={styles.textLeftBlue}>{this.props.item.lefttwo}</Text>
-                
-                <Text style={{fontSize:15,color:'#76D7C4',flex:1,  lineHeight: 30, textAlign:'right'}}>     {this.props.item.righttwo}</Text>
-                </View>
-
-                <View style={styles.textStyle}>
-                <Text style={styles.textRed}>{this.props.item.leftthree}</Text>
-                
-                <Text style={styles.textBlack}>     {this.props.item.rightthree}</Text>
-                </View>
-
-                <View style={styles.textStyle}>
-                <Text style={styles.textRed}>{this.props.item.leftfour}</Text>
-                
-                <Text style={styles.textBlack}>     {this.props.item.rightfour}</Text>
-                </View>
-
-                <View style={styles.textStyle}>
-                <Text style={styles.textRed}>{this.props.item.leftfive}</Text>
-                
-                <Text style={styles.textBlack}>     {this.props.item.rightfive}</Text>
-                </View>
-
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.buttonClick} title="Button 2"
-                    ><Text style={styles.buttonColor}>Trade</Text>
+                <View style={{alignItems: 'flex-end', marginTop: 12}}>
+                    <TouchableOpacity style={styles.tradeContainer}>
+                        <Text style={styles.trade}>Trade</Text>
                     </TouchableOpacity>
-                  </View>
+                </View>
+                
             </View>
         )
     }
 }
+
+const KeyValueView = (props) => {
+    return (
+        <View style={styles.keyValueContainer}>
+            <Text style={[styles.keyTitle, {color: props.titleColor}]}>{props.title}</Text>
+            <Text style={{color: props.valueColor}}>{props.value}</Text>
+        </View>
+    )
+}
   
 const styles = StyleSheet.create({  
     container: {  
-      flex: 1,
-    },  
-    item: {  
-        padding:15,
         flex:1,
+        padding:12,
         backgroundColor: '#F9F9F9',
-        height:280,
         borderWidth: 0.8,
         borderColor: '#BDB7B7',
     }, 
-    textStyle:{
+    keyValueContainer:{
         flexDirection: 'row',
-    
+        justifyContent: 'space-between',
+        marginTop: 4,
     },
-    textLeftBlue:{
+    keyTitle:{
         color:'#76D7C4',
         fontSize:15,
-       
     },
-    textBlue:{
-        color:'skyblue',
-        fontSize:15,
-        
-    },
-    textBlur:{
-        fontSize:15,
-        color:'#ABB2B9',
-        flex:1,  
-        lineHeight: 30, 
-        textAlign:'right'
-       
-    },
-    textBlack:{
-        fontSize:15,
-        color:'black',
-        flex:1,  
-        lineHeight: 30, 
-        textAlign:'right'
-    },
-    bodyContainer:{
-        
-      },
-      buttonClick:{
-        height:40,
+    tradeContainer:{
         borderRadius: 4,
         justifyContent:'center',
         alignItems:'center',
         backgroundColor: '#F9F9F9',
-        width:120,
         marginTop:5,
         borderWidth: 0.5,
         borderColor: '#BDB7B7',
         
       },
-      buttonColor:{
+      trade:{
+        paddingHorizontal: 12,
+        paddingVertical: 6,  
         color:"#85C1E9",
-        fontSize:20,
+        fontSize: 16,
         fontWeight:'bold'
       },
-      buttonContainer:{
-        justifyContent:'flex-end',
-        alignItems:'flex-end'
-    },
 })  
   
 export default BodyItemView;
