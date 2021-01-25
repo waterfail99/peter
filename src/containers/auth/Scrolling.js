@@ -1,5 +1,5 @@
 import React, { Component } from 'react';  
-import { StyleSheet, Text, SafeAreaView,View,Button, ScrollView ,FlatList, Touchable} from 'react-native';
+import { StyleSheet, Text, SafeAreaView,View,Button, ScrollView ,FlatList, Touchable, Alert} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import DataItemView from './DataItemView';
 import BodyItemView from './BodyItemView';
@@ -19,55 +19,59 @@ DATA_LIST.sort((a, b) => (a.priority > b.priority) ? 1 : -1)
 
 
 
-
 const Data_List_2 = [
   { id:0,
     body:'USDT',
-    leftone:"BTC", rightone:"11.105.83 ",rightone2:"/ 11,104.00 USD",
-    lefttwo:"24h Change", righttwo:"-0.35%",
-    leftthree:"24h High", rightthree:"11,180.00",
-    leftfour:"24h Low",   rightfour:"10,812.00",
-    leftfive:"24h Volume",rightfive:"125.0",
+    leftone:"BTC", rightone:"35083.62 ",
+    lefttwo:"24h Change", righttwo:0.65,
+    leftthree:"24h High", rightthree:"36360.16",
+    leftfour:"24h Low",   rightfour:"33410",
+    leftfive:"24h Volume",rightfive:"23728.33",
   },
   { id:1,
     body:'USDT',
-    leftone:"EOS", rightone:"11.105.83 / 11,104.00 USD",
-    lefttwo:"24h Change", righttwo:"-0.35%",
-    leftthree:"24h High", rightthree:"11,180.00",
-    leftfour:"24h Low",   rightfour:"10,812.00",
-    leftfive:"24h Volume",rightfive:"125.0",
+    leftone:"EOS", rightone:"2.7460",
+    lefttwo:"24h Change", righttwo:-2.59,
+    leftthree:"24h High", rightthree:"2.8116",
+    leftfour:"24h Low",   rightfour:"2.656",
+    leftfive:"24h Volume",rightfive:"23597095",
   },
   { id:2,
     body:'USDT',
-    leftone:"ETH", rightone:"11.105.83 / 11,104.00 USD",
-    lefttwo:"24h Change", righttwo:"-0.35%",
-    leftthree:"24h High", rightthree:"11,180.00",
-    leftfour:"24h Low",   rightfour:"10,812.00",
-    leftfive:"24h Volume",rightfive:"125.0",
+    leftone:"ETH", rightone:"1352.65",
+    lefttwo:"24h Change", righttwo:-3.16,
+    leftthree:"24h High", rightthree:"1402.24",
+    leftfour:"24h Low",   rightfour:"1235.71",
+    leftfive:"24h Volume",rightfive:"668705.38",
   },
   { id:3,
     body:'USDT',
-    leftone:"BNB", rightone:"11.105.83 ",rightone2:"/ 11,104.00 USD",
-    lefttwo:"24h Change", righttwo:"-0.35%",
-    leftthree:"24h High", rightthree:"11,180.00",
-    leftfour:"24h Low",   rightfour:"10,812.00",
-    leftfive:"24h Volume",rightfive:"125.0",
+    leftone:"BNB", rightone:"42.0999",
+    lefttwo:"24h Change", righttwo:-0.76,
+    leftthree:"24h High", rightthree:"42.6872",
+    leftfour:"24h Low",   rightfour:"40.2",
+    leftfive:"24h Volume",rightfive:"591269.34",
   },
   { id:4,
     body:'USDT',
-    leftone:"XRP", rightone:"11.105.83 ",rightone2:"/ 11,104.00 USD",
-    lefttwo:"24h Change", righttwo:"-0.35%",
-    leftthree:"24h High", rightthree:"11,180.00",
-    leftfour:"24h Low",   rightfour:"10,812.00",
-    leftfive:"24h Volume",rightfive:"125.0",
+    leftone:"XRP", rightone:"0.29217",
+    lefttwo:"24h Change", righttwo:2.2,
+    leftthree:"24h High", rightthree:"0.31184",
+    leftfour:"24h Low",   rightfour:"33410.00",
+    leftfive:"24h Volume",rightfive:"833009945.7",
   },
 ];
 class Scrolling extends Component  {
   onItemPress = (item) => {  
     // this.props.navigation.navigate("ListDetails", item)
     // Alert.alert(item.text, item.body);
-    
+   
 }
+
+onFravouritePress=()=>{
+Alert.alert('hello');
+}
+
   render(){
     return (
       <SafeAreaView style={styles.container}>
@@ -76,13 +80,9 @@ class Scrolling extends Component  {
           <View style={{marginHorizontal: 20,marginTop:10}}>
             
                   <FlatList  
-                  
-                      data={DATA_LIST}  
-                      
-                      renderItem={({item}) =>  
-                      
+                      data={DATA_LIST.slice(0,5)}  
+                      renderItem={({item}) =>
                           <DataItemView
-                         
                               item={item}
                               onItemPress={this.onItemPress}
                           />
@@ -94,9 +94,7 @@ class Scrolling extends Component  {
                   <View style={styles.secondContainer}>
                   <View style={styles.buttonContainer}>
                     <TouchableOpacity
-                    style={styles.buttonHorizontal}
-                    
-                    >
+                    style={styles.buttonHorizontal} onFravouritePress={this.onFravouritePress()}>
                       <Text>Favourities</Text>
                     </TouchableOpacity>
                   
