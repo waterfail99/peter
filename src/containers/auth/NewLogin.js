@@ -1,5 +1,6 @@
 
 import React from "react";
+import TextBox from 'react-native-password-eye'; 
 import {
   TouchableOpacity,
   StyleSheet,
@@ -7,7 +8,8 @@ import {
   View,
   Image,
   TextInput,
-  TouchableHighlight
+  TouchableHighlight,
+  Icon
 } from "react-native";
 import AppButton from '../../components/button/AppButton';
 import TextButton from '../../components/button/TextButton';
@@ -19,30 +21,23 @@ export default class ForgotPassword extends React.Component {
         super(props);
         this.state={
             email: '',
-            password: '',
+            password: '',   
         }
     }
- 
-   
-
-    // onLoginPress(){
-
-    // }
-    
     onForgotPasswordPress = () =>{
-       this.props.navigation.navigate("ForgotPassword")
+       this.props.navigation.navigate("Forgot Password")
       }
     onLoginPress = () => {
-        this.props.navigation.navigate("Login")
+        this.props.navigation.navigate("Market")
     }
-
     render (){
         return (
            
             <View style={styles.container}>
              
-                <Text style={styles.heading}>Reset Password</Text>
+                <Text style={styles.heading}>Log In</Text>
                 <Text style={{opacity:0.5,margin:0}}>Welcome back!</Text>
+
                 <Text style={styles.textLabel}>
                     Email
                 </Text>
@@ -51,20 +46,7 @@ export default class ForgotPassword extends React.Component {
                     keyboardType='email-address'
                     onChangeText={(email) => this.setState({email})}
                 />
-                <Text style={styles.textLabel}>
-                    Enter 4 digit Pin
-                </Text>
-                <View style={styles.containerRow}>
-                <TextInput
-                  
-                    keyboardType='email-address'
-                    onChangeText={(email) => this.setState({email})}
-                    style={styles.input}
-                />
-                <TouchableOpacity style={styles.PinContainer}>
-                    <Text style={{color:'white'}}>Get Code</Text>
-                </TouchableOpacity>
-                </View>
+                
                 <Text style={styles.textLabel}>
                     Password
                 </Text>
@@ -73,28 +55,22 @@ export default class ForgotPassword extends React.Component {
                     onChangeText={(email) => this.setState({email})}
                     secureTextEntry={true}
                 />
-                <Text style={styles.textLabel}>
-                    Confirm Password
-                </Text>
-                <FormInput
-                    placeholder={'Confirm Password'}
-                    secureTextEntry={true}
-                    onChangeText={(password) => this.setState({password})}
-                    containerStyle={{marginTop: 8}}
-                />
-                    
-               
-                
+                 <TouchableOpacity 
+                onPress={this.onForgotPasswordPress}>
+                   <Text style={{textAlign:"right",marginLeft:200}}> Forgot Password?</Text>
+                </TouchableOpacity>
+
                 <AppButton 
-                    // onPress={() => this.onLoginPress()}
                     onPress={this.onLoginPress}
                     containerStyle={{marginTop: 40,position: 'absolute', bottom: 24}}
                     title={'Submit'}
                 />
-                <View style={[styles.containerRow,{marginTop: 40,position: 'absolute', bottom: 2}]}>
-                <Text >Already Registered?</Text>
-                <TouchableOpacity><Text style={{fontWeight:"bold"}}> Log in</Text></TouchableOpacity>
                 
+                <View style={[styles.containerRow,{marginTop: 40,position: 'absolute', bottom: 2}]}>
+                <Text> Do not have account?</Text>
+                <TouchableOpacity style={{fontWeight:"bold"}}>
+                   <Text style={{fontWeight:"bold"}}> Register Now</Text>
+                </TouchableOpacity>
                 </View>
             </View>
           );
@@ -125,7 +101,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 24,
     textAlign: 'center',
-    
     marginTop:50
   },
   input: {
@@ -146,5 +121,4 @@ const styles = StyleSheet.create({
     marginBottom:5,
     opacity:0.6,
   },
-
 });

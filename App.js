@@ -97,7 +97,7 @@ import Testing from './src/containers/auth/Testing';
 
 function App(){
     return (
-        <Market/>
+        <AppNavigator/>
     )
 }
   

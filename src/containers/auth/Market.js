@@ -42,7 +42,7 @@ class Market extends Component  {
         super(props);
         this.state={
             priorityPairList: [],
-            filterOptions: [],
+            filterOptionals: [],
 
             originalPairList: [],
             filterPairList: [],
@@ -53,18 +53,18 @@ class Market extends Component  {
 
     componentDidMount(){
         let priorityPairList = [];
-        priorityPairList = DATA_LIST.sort((a, b) => (a.priority > b.priority) ? 1 : -1);
-        priorityPairList = priorityPairList.slice(0, 4);
+        priorityPairList = DATA_LIST.sort((a, b) => (a.priority > b.priority) ? 1 : -1); // order list 
+        priorityPairList = priorityPairList.slice(0, 4); // only first 4 list 
         this.setState({priorityPairList});
 
-        this.setState({filterOptions: OPTIONS});
+        this.setState({filterOptionals: OPTIONS});
 
         this.setState({
             originalPairList: DATA_LIST,
             filterPairList: DATA_LIST,
         })
 
-        this.setState({selectedOption: OPTIONS[0]}, () => {
+        this.setState({selectedOption: OPTIONS[1]}, () => {
             this.filterPairList()
         });
         
@@ -87,7 +87,7 @@ class Market extends Component  {
     filterPairList(){
         const { originalPairList, selectedOption } = this.state;
         let filterPairList = [];
-        if(selectedOption.symbol.length === 0){
+        if(selectedOption.symbol.length ===  0){
             filterPairList = originalPairList.filter((pair) => {
                 return pair.isFeature
             });
@@ -129,7 +129,7 @@ class Market extends Component  {
                     horizontal
                     showsHorizontalScrollIndicator={false}>
                     <View style={styles.filterContainer}>
-                        {this.state.filterOptions.map((option, index) => {
+                        {this.state.filterOptionals.map((option, index) => {
                             let isSelected = option === this.state.selectedOption;
                             let color = isSelected?'white':'black';
                             let backgroundColor = isSelected?'blue':'white';
@@ -139,6 +139,7 @@ class Market extends Component  {
                                     style={[styles.filter, {backgroundColor}]} 
                                     key={`${option}${index}`}>
                                     <Text style={{color}}>{option.title}</Text>
+                                    
                                 </TouchableOpacity>
                             )
                         })}
