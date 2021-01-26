@@ -32,7 +32,6 @@ export default class ForgotPassword extends React.Component {
     }
     render (){
         return (
-           
             <View style={styles.container}>
              
                 <Text style={styles.heading}>Log In</Text>
@@ -42,7 +41,6 @@ export default class ForgotPassword extends React.Component {
                     Email
                 </Text>
                 <FormInput
-                    placeholder={'Email'}
                     keyboardType='email-address'
                     onChangeText={(email) => this.setState({email})}
                 />
@@ -51,7 +49,6 @@ export default class ForgotPassword extends React.Component {
                     Password
                 </Text>
                 <FormInput
-                    placeholder={'Password'}
                     onChangeText={(email) => this.setState({email})}
                     secureTextEntry={true}
                 />

@@ -22,20 +22,12 @@ export default class ForgotPassword extends React.Component {
             password: '',
         }
     }
- 
-   
-
-    // onLoginPress(){
-
-    // }
-    
     onForgotPasswordPress = () =>{
        this.props.navigation.navigate("ForgotPassword")
       }
     onLoginPress = () => {
         this.props.navigation.navigate("Login")
     }
-
     render (){
         return (
            
@@ -47,16 +39,15 @@ export default class ForgotPassword extends React.Component {
                     Email
                 </Text>
                 <FormInput
-                    placeholder={'Email'}
                     keyboardType='email-address'
                     onChangeText={(email) => this.setState({email})}
                 />
+
                 <Text style={styles.textLabel}>
                     Enter 4 digit Pin
                 </Text>
                 <View style={styles.containerRow}>
                 <TextInput
-                  
                     keyboardType='email-address'
                     onChangeText={(email) => this.setState({email})}
                     style={styles.input}
@@ -65,28 +56,25 @@ export default class ForgotPassword extends React.Component {
                     <Text style={{color:'white'}}>Get Code</Text>
                 </TouchableOpacity>
                 </View>
+
                 <Text style={styles.textLabel}>
                     Password
                 </Text>
                 <FormInput
-                    placeholder={'Password'}
                     onChangeText={(email) => this.setState({email})}
                     secureTextEntry={true}
                 />
+
                 <Text style={styles.textLabel}>
                     Confirm Password
                 </Text>
                 <FormInput
-                    placeholder={'Confirm Password'}
                     secureTextEntry={true}
                     onChangeText={(password) => this.setState({password})}
                     containerStyle={{marginTop: 8}}
                 />
                     
-               
-                
                 <AppButton 
-                    // onPress={() => this.onLoginPress()}
                     onPress={this.onLoginPress}
                     containerStyle={{marginTop: 40,position: 'absolute', bottom: 24}}
                     title={'Submit'}
