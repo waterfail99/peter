@@ -12,6 +12,7 @@ import {
 import AppButton from '../../components/button/AppButton';
 import TextButton from '../../components/button/TextButton';
 import FormInput from '../../components/input/FormInput';
+import HeaderLabel from '../../components/header/HeaderLabel';
  
 export default class ForgotPassword extends React.Component {
 
@@ -33,50 +34,31 @@ export default class ForgotPassword extends React.Component {
            
             <View style={styles.container}>
              
-                <Text style={styles.heading}>Reset Password</Text>
-                <Text style={{opacity:0.5,margin:0}}>Welcome back!</Text>
-                <Text style={styles.textLabel}>
-                    Email
-                </Text>
-                <FormInput
-                    keyboardType='email-address'
-                    onChangeText={(email) => this.setState({email})}
+                <HeaderLabel
+                    title={'Reset Password'}
+                    subtitle={'Welcome Back!'}
                 />
-
-                <Text style={styles.textLabel}>
+                <ResetPasswordView
+                title={'Email'}
+                />
+                
+                <Text style={[styles.textLabel, {marginLeft:28}]}>
                     Enter 4 digit Pin
                 </Text>
-                <View style={styles.containerRow}>
-                <TextInput
-                    keyboardType='email-address'
-                    onChangeText={(email) => this.setState({email})}
-                    style={styles.input}
-                />
-                <TouchableOpacity style={styles.PinContainer}>
-                    <Text style={{color:'white'}}>Get Code</Text>
-                </TouchableOpacity>
-                </View>
-
-                <Text style={styles.textLabel}>
-                    Password
-                </Text>
-                <FormInput
-                    onChangeText={(email) => this.setState({email})}
-                    secureTextEntry={true}
+                <DigitPasswordView
+                    title={'Get Code'}
                 />
 
-                <Text style={styles.textLabel}>
-                    Confirm Password
-                </Text>
-                <FormInput
-                    secureTextEntry={true}
-                    onChangeText={(password) => this.setState({password})}
-                    containerStyle={{marginTop: 8}}
+                <ResetPasswordView
+                title={'Password'}
+                />
+
+                <ResetPasswordView
+                title={'Confirm Password'}
                 />
                     
-                <AppButton 
+                <ResetPasswordButton 
                     onPress={this.onLoginPress}
-                    containerStyle={{marginTop: 40,position: 'absolute', bottom: 24}}
                     title={'Submit'}
                 />
                 <View style={[styles.containerRow,{marginTop: 40,position: 'absolute', bottom: 2}]}>
@@ -88,6 +70,37 @@ export default class ForgotPassword extends React.Component {
           );
     }
 }
+const ResetPasswordView = (props) => {
+    return (
+        <View>
+            <Text style={styles.textLabel}>{props.title}</Text>
+            <TextInput style={styles.inputText}/>
+        </View>
+    )
+}
+const ResetPasswordButton = (props) => {
+    return (
+        <TouchableOpacity 
+        onPress={props.onPress}
+        style={styles.ContainerButton}>
+        <Text style={styles.ButtonTitle}>{props.title}</Text>
+        </TouchableOpacity>
+    )
+}
+const DigitPasswordView = (props) => {
+    return (
+         
+            <View style={styles.containerRow}>
+            <TextInput
+                style={styles.input}
+            />
+            <TouchableOpacity style={styles.PinContainer}>
+                <Text style={{color:'white'}}>{props.title}</Text>
+            </TouchableOpacity>
+            </View>
+    )
+}
+
  
 const styles = StyleSheet.create({
   container: {
@@ -109,11 +122,25 @@ const styles = StyleSheet.create({
     width:"30%",
     borderColor: '#BDB7B7',
   },
+  ContainerButton: {
+    width: "85%",
+    borderRadius: 4,
+    height: 35,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+    backgroundColor: '#36a4dc',
+    marginTop: 40,
+    position: 'absolute', 
+    bottom: 24
+    },
+    ButtonTitle:{
+        color:"white"
+    },
   heading: {
     fontWeight: "bold",
     fontSize: 24,
     textAlign: 'center',
-    
     marginTop:50
   },
   input: {
@@ -126,13 +153,21 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#BDB7B7',
 },
-  textLabel:{
+inputText: {
+    width:316,
+    height: 38,
+    padding: 10,
+    borderRadius: 4,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#BDB7B7',
+},
+textLabel:{
     alignSelf:'flex-start',
-    marginLeft:30,
+    marginLeft:0,
     fontWeight: "bold",
     marginTop:20,
     marginBottom:5,
     opacity:0.6,
   },
-
 });

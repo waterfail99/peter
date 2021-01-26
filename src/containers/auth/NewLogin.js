@@ -14,6 +14,8 @@ import {
 import AppButton from '../../components/button/AppButton';
 import TextButton from '../../components/button/TextButton';
 import FormInput from '../../components/input/FormInput';
+import InputLabel from '../../components/input/InputLabel';
+import HeaderLabel from "../../components/header/HeaderLabel";
  
 export default class ForgotPassword extends React.Component {
 
@@ -34,33 +36,27 @@ export default class ForgotPassword extends React.Component {
         return (
             <View style={styles.container}>
              
-                <Text style={styles.heading}>Log In</Text>
-                <Text style={{opacity:0.5,margin:0}}>Welcome back!</Text>
+                <HeaderLabel
+                    title={'Log In'}
+                    subtitle={'Welcome Back!'}
+                />
 
-                <Text style={styles.textLabel}>
-                    Email
-                </Text>
-                <FormInput
-                    keyboardType='email-address'
-                    onChangeText={(email) => this.setState({email})}
+                <LoginView 
+                    title={'Email'}
                 />
-                
-                <Text style={styles.textLabel}>
-                    Password
-                </Text>
-                <FormInput
-                    onChangeText={(email) => this.setState({email})}
-                    secureTextEntry={true}
+
+                <LoginView 
+                    title={'Password'}
                 />
+
                  <TouchableOpacity 
                 onPress={this.onForgotPasswordPress}>
-                   <Text style={{textAlign:"right",marginLeft:200}}> Forgot Password?</Text>
+                   <Text style={{textAlign:"right",marginLeft:200,marginTop:16}}> Forgot Password?</Text>
                 </TouchableOpacity>
 
-                <AppButton 
+                <LoginButton 
                     onPress={this.onLoginPress}
-                    containerStyle={{marginTop: 40,position: 'absolute', bottom: 24}}
-                    title={'Submit'}
+                    title={'Login'}
                 />
                 
                 <View style={[styles.containerRow,{marginTop: 40,position: 'absolute', bottom: 2}]}>
@@ -72,6 +68,23 @@ export default class ForgotPassword extends React.Component {
             </View>
           );
     }
+}
+const LoginView = (props) => {
+    return (
+        <View>
+            <Text style={styles.textLabel}>{props.title}</Text>
+            <TextInput style={styles.inputText}/>
+        </View>
+    )
+}
+const LoginButton = (props) => {
+    return (
+        <TouchableOpacity 
+        onPress={props.onPress}
+        style={styles.ContainerButton}>
+        <Text style={styles.ButtonTitle}>{props.title}</Text>
+        </TouchableOpacity>
+    )
 }
  
 const styles = StyleSheet.create({
@@ -91,17 +104,11 @@ const styles = StyleSheet.create({
     alignItems:'center',
     backgroundColor: '#132a3d',
     borderWidth: 0.5,
-    width:"30%",
+    width:'30%',
     borderColor: '#BDB7B7',
   },
-  heading: {
-    fontWeight: "bold",
-    fontSize: 24,
-    textAlign: 'center',
-    marginTop:50
-  },
   input: {
-    width: '50%',
+    width: '60%',
     height: 38,
     padding: 10,
     borderRadius: 4,
@@ -110,12 +117,36 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#BDB7B7',
 },
-  textLabel:{
+inputText: {
+    width:316,
+    height: 38,
+    padding: 10,
+    borderRadius: 4,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#BDB7B7',
+},
+textLabel:{
     alignSelf:'flex-start',
-    marginLeft:30,
+    marginLeft:0,
     fontWeight: "bold",
     marginTop:20,
     marginBottom:5,
     opacity:0.6,
   },
+ContainerButton: {
+    width: "85%",
+    borderRadius: 4,
+    height: 35,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+    backgroundColor: '#36a4dc',
+    marginTop: 40,
+    position: 'absolute', 
+    bottom: 24
+},
+ButtonTitle:{
+    color:"white"
+ },
 });
