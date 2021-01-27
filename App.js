@@ -14,6 +14,9 @@ import Register from './src/containers/auth/Register';
 import Restaurant from './src/containers/auth/Restaurant';
 import Market from './src/containers/auth/Market';
 import Testing from './src/containers/auth/Testing';
+import FormInput from './src/containers/auth/FormInput';
+import NewLogin from './src/containers/auth/NewLogin';
+import Password from './src/containers/auth/Password';
   
 // const DATA_LIST = [  
 //     { id: 0, text: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',body:'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto' },
@@ -97,7 +100,7 @@ import Testing from './src/containers/auth/Testing';
 
 function App(){
     return (
-        <AppNavigator/>
+        <NewLogin/>
     )
 }
   

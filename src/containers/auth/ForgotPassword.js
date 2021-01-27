@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import AppButton from '../../components/button/AppButton';
 import TextButton from '../../components/button/TextButton';
-import FormInput from '../../components/input/FormInput';
+
 import HeaderLabel from '../../components/header/HeaderLabel';
  
 export default class ForgotPassword extends React.Component {

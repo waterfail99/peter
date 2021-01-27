@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from 'react';
 import TextBox from 'react-native-password-eye'; 
 import {
   TouchableOpacity,
@@ -13,9 +13,15 @@ import {
 } from "react-native";
 import AppButton from '../../components/button/AppButton';
 import TextButton from '../../components/button/TextButton';
-import FormInput from '../../components/input/FormInput';
+import  responsiveFontSize  from "react-native-responsive-dimensions";
+import  FontAwesomeIcon  from '@fortawesome/react-native-fontawesome';
+import  {faEyeSlash, faEye}  from '@fortawesome/free-solid-svg-icons';
 import InputLabel from '../../components/input/InputLabel';
 import HeaderLabel from "../../components/header/HeaderLabel";
+import Password from '../auth/Password';
+import FormInput from '../auth/FormInput'
+
+
  
 export default class ForgotPassword extends React.Component {
 
@@ -43,20 +49,26 @@ export default class ForgotPassword extends React.Component {
 
                 <LoginView 
                     title={'Email'}
+                  
+                    
                 />
 
-                <LoginView 
-                    title={'Password'}
+               
+                <FormInput
+                title={'Password'}
+                secureTextEntry={true}
                 />
 
                  <TouchableOpacity 
                 onPress={this.onForgotPasswordPress}>
                    <Text style={{textAlign:"right",marginLeft:200,marginTop:16}}> Forgot Password?</Text>
                 </TouchableOpacity>
+               
 
                 <LoginButton 
                     onPress={this.onLoginPress}
                     title={'Login'}
+                    
                 />
                 
                 <View style={[styles.containerRow,{marginTop: 40,position: 'absolute', bottom: 2}]}>
@@ -86,7 +98,43 @@ const LoginButton = (props) => {
         </TouchableOpacity>
     )
 }
- 
+
+const PasswordInput = (props) => {
+    const { title } = props;
+    const [hidePassword, setHidePassword] = useState(true);
+    const [isFocused, setIsFocus] = useState(false);
+
+    let color = isFocused ? '#1F1F1F' : '#60595A';
+    let borderColor = isFocused ? '#1F1F1F' : '#382024';
+    let borderWidth = isFocused ? 1.2 : 1;
+    return (
+        <View style={{ ...props.containerStyle }}>
+            <Text style={[styles.title, { color }]}>{title}</Text>
+            <View style={[styles.inputContainer, { borderColor, borderWidth }]}>
+                <TextInput
+                    {...props}
+                    placeholder={props.placeholder}
+                    secureTextEntry={props.secureTextEntry && hidePassword}
+                    style={styles.input}
+                    onFocus={() => setIsFocus(true)}
+                    onBlur={() => setIsFocus(false)}
+                />
+                {props.secureTextEntry &&
+                    <TouchableOpacity onPress={() => setHidePassword(!hidePassword)}>
+                        <FontAwesomeIcon
+                            icon={hidePassword ? faEyeSlash : faEye}
+                            size={20}
+                        />
+                    </TouchableOpacity>
+                }
+            </View>
+            {props.hint &&
+                <Text style={styles.hint}>{props.hint}</Text>
+            }
+        </View>
+    )
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -108,7 +156,7 @@ const styles = StyleSheet.create({
     borderColor: '#BDB7B7',
   },
   input: {
-    width: '60%',
+    width: 316,
     height: 38,
     padding: 10,
     borderRadius: 4,
