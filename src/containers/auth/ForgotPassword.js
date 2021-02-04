@@ -75,6 +75,7 @@ const ResetPasswordView = (props) => {
         <View>
             <Text style={styles.textLabel}>{props.title}</Text>
             <TextInput style={styles.inputText}/>
+            
         </View>
     )
 }

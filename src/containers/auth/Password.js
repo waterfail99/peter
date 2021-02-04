@@ -18,6 +18,7 @@ export default function Password(props) {
         style=
         {styles.input}
         placeholder={props.placeholder} />
+        
     {
     props.secureText &&
     <FontAwesomeIcon style={{ paddingRight: 15, }}

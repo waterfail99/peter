@@ -9,6 +9,7 @@ import {
 
 export default class InputLabel extends React.Component {
     render(){
+        
         return (
             <View style={[styles.container, {...this.props.containerStyle}]}>
             <Text style={styles.textLabel}>{this.props.title}</Text>

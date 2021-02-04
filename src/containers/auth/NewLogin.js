@@ -70,6 +70,11 @@ export default class ForgotPassword extends React.Component {
                     title={'Login'}
                     
                 />
+    
+
+
+
+
                 
                 <View style={[styles.containerRow,{marginTop: 40,position: 'absolute', bottom: 2}]}>
                 <Text> Do not have account?</Text>
